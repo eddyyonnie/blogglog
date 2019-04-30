@@ -17,10 +17,10 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(120), index=True, unique = True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(130))
-    blog = db.relationship('Pitch', backref='author', lazy='dynamic')
+    blog = db.relationship('Blog', backref='author', lazy='dynamic')
     bio = db.Column(db.String(255))
     profile_pic = db.Column(db.String(255))
-    blogs = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+    blogs = db.relationship('Blog',backref = 'user',lazy = "dynamic")
     comments = db.relationship('Comments', backref='user', lazy="dynamic")
 
 
@@ -64,7 +64,7 @@ class User(UserMixin, db.Model):
     def get_user(cls,id):
         users = User.query.filter_by(id=id).all()
         return users
-class Pitch(db.Model):
+class Blog(db.Model):
     __tablename__= 'blogs'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
@@ -73,10 +73,10 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     @classmethod
     def retrieve_posts(cls,id):
-        blogs = Pitch.filter_by(id=id).all()
+        blogs = Blog.filter_by(id=id).all()
         return blogs
     '''
-    Pitch class represent the blogs Pitched by 
+    Blog class represent the blogs Bloged by 
     users. Timestamp is set to default and passsed datetime.utcnow--> function.
     SQLAlchemy will set the field to the value of calling that function
     and not the result of calling it without ()

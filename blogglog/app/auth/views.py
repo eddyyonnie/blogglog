@@ -7,7 +7,7 @@ from .forms import LoginForm,EditProfileForm, RegistrationForm,ResetPasswordRequ
 from app import db
 from datetime import datetime
 from app.email import *
-from ..email import mail_message
+
 
 ##################Registration route section#############
 @auth.route('/register', methods = ['GET','POST'])
@@ -20,8 +20,6 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-
-        mail_message("Welcome to One Minute Pitch","email/welcome_user",user.email,user=user)
 
 
         return redirect(url_for('auth.login'))

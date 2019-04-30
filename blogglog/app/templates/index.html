@@ -5,17 +5,17 @@
 <body style="background-image: url('https://www.publicdomainpictures.net/pictures/200000/nahled/outer-space.jpg');margin-bottom:12px;">
     <div id="pageintro" class="hoc clear">
       <article>
-        <p>Welcome to OneMinutePitch.</p>
+        <p>Welcome...BLOGGLOG at your service<img src="https://www.pngkey.com/png/detail/22-222243_emoji-transparent-smiley-face-emoji-with-no-background.png" class= 'thumbnail' heigh="20px" width="20px"></p>
         <footer>
             {%if current_user.is_authenticated %}
 
           <ul class="nospace inline pushright">
-            <li><a class="btn" href="/post">View Pitches</a></li> 
-            <li><a class="btn" href="/post/{{current_user.id}}">My Pitches</a></li> 
+            <li><a class="btn" href="/post">View Blogs</a></li> 
+            <li><a class="btn" href="/post/{{current_user.id}}">My Blogs</a></li> 
 
             {% else%}</ul>
             <ul class="nospace inline pushright">
-                <li><a class="btn" href="/post">View Pitches</a></li> 
+                <li><a class="btn" href="/post">View Blogs</a></li> 
 
             <li><a class="btn inverse" href="{{url_for('auth.register')}}">Join us today</a></li>
           </ul>{%endif %}

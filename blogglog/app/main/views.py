@@ -15,6 +15,10 @@ def before_request():
 @main.route('/')
 # @login_required
 def index():
+    
+    random = requests.get('http://quotes.stormconsultancy.co.uk/random.json').json()
+
+
 
     title = 'Go  BLOGGY!!'
 
@@ -29,8 +33,9 @@ def index():
         }
         ]
     tech = Blog.query.filter_by(category='Technology').all()
+    blogs = Blog.query.all()
 
-    return render_template('index.html', title= title,posts=posts, tech=tech)
+    return render_template('index.html', title= title,posts=posts, tech=tech, blogs = blogs, random=random)
 
 
 

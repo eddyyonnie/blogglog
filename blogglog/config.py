@@ -3,7 +3,7 @@ import os
 class Config:
     SECRET_KEY=os.environ.get('SECRET_KEY')
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/blog'
     MAIL_SERVER ='smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
@@ -11,7 +11,7 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
-    SUBJECT_PREFIX = 'One Minute Pitch'
+    SUBJECT_PREFIX = 'Blogglog'
     SENDER_EMAIL = 'eddyyonnie@gmail.com'
 
     @staticmethod
@@ -24,10 +24,10 @@ class ProdConfig(Config):
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/blog'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12345@localhost/blog'
     DEBUG = True
     
 config_options = {

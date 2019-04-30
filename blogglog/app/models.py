@@ -17,10 +17,10 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(120), index=True, unique = True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(130))
-    pitch = db.relationship('Pitch', backref='author', lazy='dynamic')
+    blog = db.relationship('Pitch', backref='author', lazy='dynamic')
     bio = db.Column(db.String(255))
     profile_pic = db.Column(db.String(255))
-    pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+    blogs = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
     comments = db.relationship('Comments', backref='user', lazy="dynamic")
 
 
@@ -65,7 +65,7 @@ class User(UserMixin, db.Model):
         users = User.query.filter_by(id=id).all()
         return users
 class Pitch(db.Model):
-    __tablename__= 'pitches'
+    __tablename__= 'blogs'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     category = db.Column(db.String(140))
@@ -73,8 +73,8 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     @classmethod
     def retrieve_posts(cls,id):
-        pitches = Pitch.filter_by(id=id).all()
-        return pitches
+        blogs = Pitch.filter_by(id=id).all()
+        return blogs
     '''
     Pitch class represent the pitches Pitched by 
     users. Timestamp is set to default and passsed datetime.utcnow--> function.

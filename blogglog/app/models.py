@@ -76,7 +76,7 @@ class Pitch(db.Model):
         blogs = Pitch.filter_by(id=id).all()
         return blogs
     '''
-    Pitch class represent the pitches Pitched by 
+    Pitch class represent the blogs Pitched by 
     users. Timestamp is set to default and passsed datetime.utcnow--> function.
     SQLAlchemy will set the field to the value of calling that function
     and not the result of calling it without ()
@@ -92,6 +92,6 @@ class Comments(db.Model):
     __tablename__='comments'
     id = db.Column(db.Integer,primary_key= True)
     details = db.Column(db.String(255))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 

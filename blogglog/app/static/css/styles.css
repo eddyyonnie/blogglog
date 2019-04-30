@@ -190,10 +190,10 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-a{color:purple;}
+a{color:white;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
-label span{color:#FF0000; background-color:inherit;}
+label span{color:white; background-color:inherit;}
 input:focus, textarea:focus, *:required:focus{border-color:purple;}
 .overlay{color:#FFFFFF; background-color:inherit;}
 
@@ -297,10 +297,6 @@ table a, #comments a{background-color:inherit;}
 	#mainav form{display:block;}
 	#comments input[type="reset"]{margin-top:10px;}
 	.pagination li{display:inline-block; margin:0 5px 5px 0;}
-
-	#footer{}
-
-	#copyright{}
 	#copyright p:first-of-type{margin-bottom:10px;}
 }
 

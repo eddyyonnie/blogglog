@@ -1,9 +1,9 @@
-# One Minute Pitch
+# BLOGGLOG
 ## Description
-* This is a credentialed requirement for actually being able to pitch phrases and saying one sees fit into availed categories for the exploration a user's eyes.
+* This is a credentialed requirement for actually being able to blogs phrases and saying one sees fit into availed categories for the exploration a user's eyes.
 
 # User stories :
-    * As a user, I would like to see the pitches other people have posted.
+    * As a user, I would like to see the blogs other people have posted.
     * As a user, I would like to vote on the pitch they liked and give it  a downvote or upvote.
     * As a user, I would like to be signed in for me to leave a comment
     * As a user, I would like to receive a welcoming email once I sign up.

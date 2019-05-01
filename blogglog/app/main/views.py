@@ -1,12 +1,14 @@
-from flask import render_template,request,flash,redirect,url_for
+from flask import render_template,request,flash,redirect,url_for, abort
 from . import main
 from flask_login import login_required,current_user
-from app.models import User,Blog,Comments
+from app.models import User,Blog,Comments,Subscriber
 from datetime import datetime
 from app import db, photos
-from .forms import PostForm,CommentForm
+from .forms import PostForm,CommentForm,UpdateProfile
+import markdown2
 import json
-import requests
+import requestsurl_for
+from ..email import mail_message
 
 @main.before_request
 def before_request():
@@ -34,10 +36,10 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
         ]
-    tech = Blog.query.filter_by(category='Technology').all()
+    
     blogs = Blog.query.all()
 
-    return render_template('index.html', title= title,posts=posts, tech=tech, blogs = blogs, random=random)
+    return render_template('index.html', title= title,posts=posts, blogs = blogs, random=random)
 
 
 
@@ -100,7 +102,7 @@ def technology():
     return render_template('technology.html', technology = technology,form=form)
 
 @main.route('/sales' ,methods = ['GET','POST'])
-def technolog():
+def technology():
     sales = Blog.query.filter_by(category = 'sales').all()
     form = CommentForm()
     if form.validate_on_submit():
@@ -197,8 +199,21 @@ def update_pic(username):
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()
-    return redirect(url_for('auth.user_profile',username=username))    
 
+     if user is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+return redirect(url_for('.profile',uname=user.username))
+    return redirect(url_for('auth.user_profile',username=username))    
+return render_template('profile/update.html',form =form,user=user)
 # @login_required
 # def post():
 #     form = PostForm()
@@ -228,6 +243,9 @@ def user_profile(username):
             'author':user, 'body':'test Post#1'
         }
     ]
+    if user is None:
+        abort(404)
+
     return render_template('profile/user_profile.html',posts=posts, user=user)
     '''
     i have used a variant of first() called fist_or_404()

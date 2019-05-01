@@ -5,6 +5,8 @@ from app.models import User,Blog,Comments
 from datetime import datetime
 from app import db, photos
 from .forms import PostForm,CommentForm
+import json
+import requests
 
 @main.before_request
 def before_request():

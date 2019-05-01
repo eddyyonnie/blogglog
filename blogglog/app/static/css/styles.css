@@ -377,3 +377,6 @@ a:hover { text-decoration:none; }
 .post .glyphicon { font-family: 'Patua One', cursive;margin-right:5px; }
 .post-header-line {font-family: 'Patua One', cursive; border-top:1px solid #DDD;border-bottom:1px solid #DDD;padding:5px 0px 5px 15px;font-size: 12px;color:white; }
 .post-content {font-family: 'Patua One', cursive; padding-bottom: 15px;padding-top: 15px;}
+#change{
+height:200px;
+}

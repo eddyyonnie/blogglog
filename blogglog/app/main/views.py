@@ -5,6 +5,8 @@ from app.models import User,Blog,Comments
 from datetime import datetime
 from app import db, photos
 from .forms import PostForm,CommentForm
+import json
+import requests
 
 @main.before_request
 def before_request():
@@ -96,10 +98,23 @@ def technology():
         db.session.commit()
 
     return render_template('technology.html', technology = technology,form=form)
+def business():
+    business = Blog.query.filter_by(category = 'business').all()
+    form = CommentForm()
+    if form.validate_on_submit():
+        details = form.details.data
+        user = current_user
 
+        new_comment = Comments(details = details,blog_id=id,user =user)
+        # # save comment
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return render_template('business.html', business = business,form=form)
+    
 @main.route('/sales' ,methods = ['GET','POST'])
 def technolog():
-    sales = Blog.query.filter_by(category = 'sales').all()
+    sales = Blog.query.filter_by(category = 'Enterprenuiral').all()
     form = CommentForm()
     if form.validate_on_submit():
         details = form.details.data
@@ -114,7 +129,7 @@ def technolog():
 
 @main.route('/interview' ,methods = ['GET','POST'])
 def interview():
-    interview = Blog.query.filter_by(category = 'Interview').all()
+    interview = Blog.query.filter_by(category = 'Office-Point').all()
 
     form = CommentForm()
     if form.validate_on_submit():
@@ -155,7 +170,7 @@ def pickuplines():
         db.session.add(new_comment)
         db.session.commit()
 
-    pickuplines = Blog.query.filter_by(category = 'Pickuplines').all()
+    pickuplines = Blog.query.filter_by(category = 'Sports').all()
 
     if pickuplines is None:
         abort(404)

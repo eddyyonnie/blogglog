@@ -12,3 +12,7 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     details = StringField('Write a comment',validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.', validators = [Required()])
+    submit = SubmitField('Submit')

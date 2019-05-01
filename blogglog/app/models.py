@@ -6,6 +6,15 @@ from hashlib import md5
 from time import time
 from app import create_app
 
+class Quote:
+    '''
+    Quote class to hold random quote
+    '''
+
+    def __init__(self, author, quote, permalink):
+        self.author = author
+        self.quote = quote
+        self.permalink = permalink
 
 class User(UserMixin, db.Model):
     '''

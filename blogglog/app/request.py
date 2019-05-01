@@ -21,4 +21,4 @@ def get_quote():
 
             quote_result = Quote(author, quote, permalink)
 
-return quote_result
+        return quote_result

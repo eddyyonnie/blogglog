@@ -151,7 +151,7 @@ def edit_profile():
 #     send_password_reset_email()
 #     '''
 
-    ########Rsetting password######
+#     ########Rsetting password######
 
 # @auth.route('/reset_password/<token>', methods=['GET', 'POST'])
 # def reset_password(token):
